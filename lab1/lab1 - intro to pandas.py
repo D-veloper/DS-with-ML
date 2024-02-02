@@ -23,15 +23,24 @@ with open("countries.csv", 'r') as countries_file:
             d_2[header].append(row_values[i])
 
 df_2 = pd.DataFrame(data=d_2)
-print(df_2)
+# print(df_2)
 
 # 3. repeat task 2 but using the pandas function to create dataframes from csv.
+df_3 = pd.read_csv("countries.csv")
+# print(df_3)
 
 # 4. there is a pandas function, head(). use it to select top rows from table (default is 5).
+df_3_head = df_3.head(10)
+# print(df_3_head)
 
 # 5. select one column. This is also called a series object.
+pop_column = df_3_head[['POP']]
+# print(pop_column)
 
 # 6. select two columns of your choosing from the entire table. isolate that data.
+
+pop_area = df_3_head[['POP', 'AREA']]
+print(pop_area)
 
 # 7. select rows from their indices (e.g. row 5 to 10).
 
@@ -65,7 +74,7 @@ print(df_2)
 # 21. combine both tables vertically (add rows).
 
 # 22. combine tables horizontally (add columns).
-# read documentation and try to understand the behaviour of possible values of the how argument in the merge() function.
+# read documentation and try to understand the behaviour of possible values of 'how' argument in the merge() function.
 
 # Summary statistics on the table:
 #
