@@ -4,8 +4,26 @@
 import pandas as pd
 
 # 1. create a dataframe with two columns 'col1' and 'col2'.
+d = {'Name': ['Tom', 'Dick', 'Harry'], 'Age': [6, 7, 8]}
+df = pd.DataFrame(data=d, index=[i for i in range(len(d['Name']))])
+# print(df)
+
+d_1 = {'col1': [0, 1], 'col2': [2, 3]}
+df_1 = pd.DataFrame(data=d_1)
+# print(df_1)
 
 # 2. read the csv file containing country data and manually create new dataframe with it.
+
+with open("countries.csv", 'r') as countries_file:
+    headers = countries_file.readline().strip().split(',')
+    d_2 = {header: [] for header in headers}
+    for line in countries_file:
+        row_values = line.strip().split(',')
+        for i, header in enumerate(headers):
+            d_2[header].append(row_values[i])
+
+df_2 = pd.DataFrame(data=d_2)
+print(df_2)
 
 # 3. repeat task 2 but using the pandas function to create dataframes from csv.
 
