@@ -34,19 +34,23 @@ df_3_head = df_3.head(10)
 # print(df_3_head)
 
 # 5. select one column. This is also called a series object.
-pop_column = df_3_head[['POP']]
-# print(pop_column)
+pop_series = df_3_head[['POP']]
+# print(pop_series)
 
 # 6. select two columns of your choosing from the entire table. isolate that data.
-
-pop_area = df_3_head[['POP', 'AREA']]
-print(pop_area)
+df_pop_area = df_3_head[['POP', 'AREA']]
+# print(df_pop_area)
 
 # 7. select rows from their indices (e.g. row 5 to 10).
+# print(df_3.iloc[5:10])
 
 # 8. select rows based on a condition, such as countries whose area is greater than 1000.
+df_biggest_countries = df_3[df_3['AREA'] > 1000]
+# print(df_biggest_countries)
 
 # 9. select specific columns containing rows selected based on a condition.
+df_pop_area_biggest_countries = df_3.loc[df_3['AREA'] > 1000, ['POP', 'AREA']]
+# print(df_pop_area_biggest_countries)
 
 # 10. select rows and columns based on their names.
 
