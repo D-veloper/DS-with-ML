@@ -71,19 +71,39 @@ df_area_cont_sort = df_3.sort_values(by=['CONT', 'AREA'], ascending=(True, False
 # print(df_area_cont_sort)
 
 # 15. assign new values using indices (create copy so original df is not modified).
+df_countries_post_2022 = df_3.copy()
+df_countries_post_2022.loc[df_countries_post_2022['COUNTRY'] == 'UK', 'CONT'] = 'Brexit'
+# print(df_countries_post_2022)
 
 # 16. create a new column from another column.
+df_countries_post_2022['AREA_SQUARE_KM'] = df_countries_post_2022['AREA'] * 1000
+# print(df_countries_post_2022)
 
 # 17. delete a column.
+df_countries_post_2022 = df_countries_post_2022.drop(columns=['AREA'])
+# print(df_countries_post_2022)
 
 # 18. create new column SIZE. The value is Large if the area of the country is greater than 1M ^ 2 km and Small if less.
 # Assigning new values can be useful in cases where we want to discretize quantitative data.
+df_countries_post_2022['SIZE'] = ""
+df_countries_post_2022.loc[df_countries_post_2022['AREA_SQUARE_KM'] > 1000000, 'SIZE'] = 'Large'
+df_countries_post_2022.loc[df_countries_post_2022['AREA_SQUARE_KM'] < 1000000, 'SIZE'] = 'Small'
+# print(df_countries_post_2022)
 
 # 19. write table to a file.
+# df_countries_post_2022.to_csv("countries_new.csv", index=False)
 
 # 20. read the countries data file in two halves.
+df_countries_1 = pd.read_csv("countries_new.csv", nrows=10)
+df_countries_2 = pd.read_csv("countries_new.csv", skiprows=range(1, 11))
+
+# print(df_countries_1.shape)
+# print(df_countries_2.shape)
 
 # 21. combine both tables vertically (add rows).
+
+df_countries_new = pd.concat([df_countries_1, df_countries_2]).reset_index(drop=True)
+# print(df_countries_new)
 
 # 22. combine tables horizontally (add columns).
 # read documentation and try to understand the behaviour of possible values of 'how' argument in the merge() function.
