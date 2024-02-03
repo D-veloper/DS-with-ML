@@ -52,9 +52,12 @@ df_biggest_countries = df_3[df_3['AREA'] > 1000]
 df_pop_area_biggest_countries = df_3.loc[df_3['AREA'] > 1000, ['POP', 'AREA']]
 # print(df_pop_area_biggest_countries)
 
-# 10. select rows and columns based on their names.
+# 10. select rows and columns based on their country names.
+df_countries_indices = df_3.rename(index=df_3['COUNTRY'])  # rename index by countries.
+# print(df_countries_indices.loc[['UK', 'France'], ['POP', 'AREA']])
 
 # 11. perform a two-dimensional selection based on indexes of both rows and columns.
+# print(df_3.iloc[5:10, 2:4])
 
 # 12. Use conditions to store the population of all the European countries of the dataset in a european_pops variable.
 
