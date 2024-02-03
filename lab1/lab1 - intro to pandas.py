@@ -60,10 +60,15 @@ df_countries_indices = df_3.rename(index=df_3['COUNTRY'])  # rename index by cou
 # print(df_3.iloc[5:10, 2:4])
 
 # 12. Use conditions to store the population of all the European countries of the dataset in a european_pops variable.
+european_pops = df_3.loc[df_3['CONT'] == "Europe", ['COUNTRY', 'POP']]
+# print(european_pops)
 
 # 13. sort the df_countries DataFrame by descending GDP, and print only the 10 countries with the highest GDP.
-
+df_gpd_sort = df_3.sort_values(by=['GDP'], ascending=False)
+# print(df_gpd_sort.head(10))
 # 14. sort the df_countries DataFrame by continents in alphabetical order and descending area size.
+df_area_cont_sort = df_3.sort_values(by=['CONT', 'AREA'], ascending=(True, False))
+# print(df_area_cont_sort)
 
 # 15. assign new values using indices (create copy so original df is not modified).
 
