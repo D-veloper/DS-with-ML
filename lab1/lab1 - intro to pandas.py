@@ -107,17 +107,22 @@ df_countries_new = pd.concat([df_countries_1, df_countries_2]).reset_index(drop=
 
 # 22. combine tables horizontally (add columns).
 # read documentation and try to understand the behaviour of possible values of 'how' argument in the merge() function.
+df_4 = df_3[['COUNTRY', 'POP']].sort_values(by='POP').iloc[5:]
+df_5 = df_3[['COUNTRY', 'GDP', 'AREA']]
+df_6 = pd.merge(df_4, df_5, on='COUNTRY', how='inner')
+# print(df_6)
 
 # Summary statistics on the table:
-#
-# df.describe()
-# df.describe()
-# df.median(numeric_only=True)
-# df['POP'].skew()
-# df['GDP'].kurtosis()
+# print(df_countries_post_2022.describe())
+# print(df_countries_post_2022.median(numeric_only=True))
+# print(df_countries_post_2022['POP'].skew())
+# print(df_countries_post_2022['GDP'].kurtosis())
+
 # Task 23: do some research on what all these statistics represent if you don't know about them.
 
 # 24. present in a new column of the table the density of population of every country in people per square meter.
+df_3['POPULATION DENSITY'] = df_3['AREA']/df_3['POP']
+print(df_3)
 
 # 25. what continent has the countries with the largest density of population on average?
 
